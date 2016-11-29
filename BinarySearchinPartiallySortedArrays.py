@@ -24,14 +24,20 @@ def find_min_rotated(input_array):
     p1 = 0
     p2 = len(input_array)-1
 
-    while p2 > p1 :
-        mid = p1 + (p2-p1)/2
+    if input_array[p1] < input_array[p2]:
+        return p1
 
+    while p2 > p1 :
+        if p2 - p1  == 1 :
+            p2
+        mid = p1 + (p2-p1)/2
+        if mid > 0 and mid < len(input_array) and input_array[mid] < input_array[mid - 1] and input_array[mid] < input_array[mid + 1]:
+            return mid
         if input_array[mid] < input_array[p2]:
             if input_array[mid] > input_array[p1]:
                 p2 = mid - 1
             else:
-                return mid
+                p2 = mid - 1
         else:
             if input_array[mid] > input_array[p1]:
                 p1 = mid + 1
@@ -40,9 +46,10 @@ def find_min_rotated(input_array):
 
     return p1
 
-
 print find_min_rotated([1, 2, 3, 4, 5])
+
+print find_min_rotated([5, 1, 2, 3, 4])
+print find_min_rotated([4, 5, 1, 2, 3])
+
 print find_min_rotated([3, 4, 5, 1, 2])
 print find_min_rotated([2, 3, 4, 5, 1])
-print find_min_rotated([4, 5, 1, 2, 3])
-print find_min_rotated([5, 1, 2, 3, 4])
