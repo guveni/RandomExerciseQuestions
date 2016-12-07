@@ -28,7 +28,7 @@ def get_min_count(total, coins):
 
     for x in xrange(1, row_len):
         for y in xrange(1, column_len):
-
+            pass
 
 print get_min_count(15, [1,3,9,10])
 
