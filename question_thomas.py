@@ -50,7 +50,6 @@ class CharTree(object):
                 while greedy_index < inp_len and word_tree.does_word_exist(inp_len[i:greedy_index]):
                     greedy_index += 1
 
-    def
     def _add_word(self, word):
         check_raise_error(word, basestring)
         #todo
