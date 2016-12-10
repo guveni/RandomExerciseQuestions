@@ -12,44 +12,36 @@ class ListNode(object):
         self.next = None
         self.arbitrary = None
 
+
 def copy_complex_list(root):
+    copy_root = None
     if not root:
-        return None
+        return copy_root
 
-    new_root = None
-    n_c_node = None
     c_node = root
-
     while c_node:
         temp = ListNode(c_node.value)
-        if not n_c_node:
-            new_root = temp
-            n_c_node = temp
-        else:
-            n_c_node.next = temp
-            n_c_node = n_c_node.next
-
         temp.next = c_node.next
         c_node.next = temp
         c_node = temp.next
 
-    print 'copied : first'
-
     c_node = root
     while c_node:
         temp = c_node.next
-        temp.arbitrary = c_node.arbitrary
-        if temp.arbitrary:
-            temp.arbitrary = temp.arbitrary.next
+        if c_node.arbitrary:
+            temp.arbitrary = c_node.arbitrary.next
         c_node = temp.next
 
+    copy_root = root.next
     c_node = root
     while c_node:
         temp = c_node.next
         c_node.next = temp.next
+        if c_node.next:
+            temp.next = c_node.next.next
         c_node = c_node.next
 
-    return new_root
+    return copy_root
 
 
 first = ListNode(40)
