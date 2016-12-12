@@ -27,4 +27,3 @@ class MinStack(object):
             raise ValueError()
 
         return self.stack[len(self.stack)-1].min
-    
