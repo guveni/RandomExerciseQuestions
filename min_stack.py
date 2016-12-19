@@ -15,7 +15,10 @@ class MinStack(object):
         self.stack = []
 
     def push(self, value):
-        self.stack.append(StackNode(value, self.min()))
+        min = value
+        if self.stack and min > self.min():
+            min = self.min()
+        self.stack.append(StackNode(value, min))
 
     def pop(self):
         if not self.stack:
